@@ -63,6 +63,16 @@ async function createRentalRepository(customerId, gameId, daysRented) {
     return true;
 }
 
+async function countOpenRentalsByGameId(gameId) {
+    const result = await db.query(
+      `SELECT COUNT(*) 
+       FROM rentals 
+       WHERE "gameId" = $1 AND "returnDate" IS NULL;`,
+      [gameId]
+    );
+    return parseInt(result.rows[0].count);
+  }
+
 async function returnRentalRepository(id) {
     const rentalResult = await db.query(
         `SELECT rentals.*, games."pricePerDay"
@@ -126,7 +136,8 @@ const rentalsRepository = {
     deleteRentalRepository,
     getCustomerById,
     getGameById,
-    getRentalById
+    getRentalById,
+    countOpenRentalsByGameId
 };
 
 export default rentalsRepository;
