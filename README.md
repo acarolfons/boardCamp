@@ -7,4 +7,4 @@ Objetivo: criar e gerenciar um sistema de aluguel de jogos de tabuleiro.
 - Node.js
 - Express
 - PostgreSQL
-- JavaScript
+- React
