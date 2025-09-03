@@ -141,4 +141,4 @@ const rentalsRepository = {
     countOpenRentalsByGameId
 };
 
-export default rentalsRepository;
+export default rentalsRepository
